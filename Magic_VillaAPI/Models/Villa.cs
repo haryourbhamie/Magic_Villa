@@ -9,10 +9,11 @@ namespace Magic_VillaAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+        public int HouseNumber { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime UpdatedTime { get; set; }
 
         public int Sqft { get; set; }
-        public string Street { get; set; }
+        public string Address { get; set; }
     }
 }
