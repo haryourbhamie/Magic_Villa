@@ -10,12 +10,12 @@ namespace Magic_VillaAPI.Data
             { 
             }
         
-        public DbSet<Villa> Villas  { get; set; }
+        public DbSet<House> houses  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Villa>().HasData(
-                new Villa()
+            modelBuilder.Entity<House>().HasData(
+                new House()
                 {
                     Id = 1,
                     Name = "Pool View",
@@ -25,7 +25,7 @@ namespace Magic_VillaAPI.Data
                     CreatedTime = DateTime.Now,
                     UpdatedTime = DateTime.Now,
                 },
-                new Villa()
+                new House()
                 {
                     Id = 2,
                     Name = "Beach View",
@@ -35,7 +35,7 @@ namespace Magic_VillaAPI.Data
                     CreatedTime = DateTime.Now,
                     UpdatedTime = DateTime.Now,
                 },
-                new Villa()
+                new House()
                 {
                     Id = 3,
                     Name = "Liverpool View",
@@ -45,7 +45,7 @@ namespace Magic_VillaAPI.Data
                     CreatedTime = DateTime.Now,
                     UpdatedTime = DateTime.Now,
                 },
-                new Villa()
+                new House()
                 {
                     Id = 4,
                     Name = "Las-Vegas View",
@@ -55,7 +55,7 @@ namespace Magic_VillaAPI.Data
                     CreatedTime = DateTime.Now,
                     UpdatedTime = DateTime.Now,
                 },
-                new Villa()
+                new House()
                 {
                     Id = 5,
                     Name = "Alaska View",
@@ -65,7 +65,7 @@ namespace Magic_VillaAPI.Data
                     CreatedTime = DateTime.Now,
                     UpdatedTime = DateTime.Now,
                 },
-                new Villa()
+                new House()
                 {
                     Id = 6,
                     Name = "Manchester View",
@@ -75,7 +75,7 @@ namespace Magic_VillaAPI.Data
                     CreatedTime = DateTime.Now,
                     UpdatedTime = DateTime.Now,
                 },
-                new Villa()
+                new House()
                 {
                     Id = 7,
                     Name = "Lagoon View",

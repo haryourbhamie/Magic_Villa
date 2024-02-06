@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Magic_VillaAPI.Models
 {
-    public class Villa
+    public class House
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

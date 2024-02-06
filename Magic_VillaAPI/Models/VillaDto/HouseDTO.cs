@@ -1,6 +1,6 @@
 ﻿namespace Magic_VillaAPI.Models.VillaDto
 {
-    public class VillaDTO
+    public class HouseDTO
     {
       
         public int Id { get; set; }

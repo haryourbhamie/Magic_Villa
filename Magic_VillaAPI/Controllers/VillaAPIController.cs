@@ -12,20 +12,20 @@ namespace Magic_VillaAPI.Controllers
     public class  VillaAPIController : ControllerBase
     {
         [HttpGet]
-        public ActionResult <IEnumerable<VillaDTO>> GetVillas()
+        public ActionResult <IEnumerable<HouseDTO>> GetVillas()
         {
-            return Ok (VillaStore.villaList);
+            return Ok (VillaStore.HouseList);
         }
 
         [HttpGet("{id:int}", Name = "GetVillas")]
 
-        public ActionResult<VillaDTO> GetVilla(int id)
+        public ActionResult<HouseDTO> GetVilla(int id)
         {
             if (id == 0)
             {
                 return BadRequest();
             }
-            var villa = VillaStore.villaList.FirstOrDefault(e => e.Id == id);
+            var villa = VillaStore.HouseList.FirstOrDefault(e => e.Id == id);
             if (villa == null)
             {
                 return NotFound();
@@ -35,9 +35,9 @@ namespace Magic_VillaAPI.Controllers
 
         [HttpPost("{id:int}", Name = "GetVillas")]
 
-        public ActionResult<VillaDTO> CreateVilla([FromBody]VillaDTO villa)
+        public ActionResult<HouseDTO> CreateVilla([FromBody]HouseDTO villa)
         {
-            if (VillaStore.villaList.FirstOrDefault(e=>e.Name.ToLower()==villa.Name.ToLower()) != null) 
+            if (VillaStore.HouseList.FirstOrDefault(e=>e.Name.ToLower()==villa.Name.ToLower()) != null) 
             {
                 ModelState.AddModelError("CustomError", "Name Already Exists!!!");
                 return BadRequest(ModelState);
@@ -51,8 +51,8 @@ namespace Magic_VillaAPI.Controllers
                 ModelState.AddModelError("CustomError", "ID Must NOt BE Greater than Zero!!!");
                  return BadRequest(ModelState);
             }
-            villa.Id = VillaStore.villaList.OrderByDescending(e => e.Id).FirstOrDefault().Id + 1;
-            VillaStore.villaList.Add(villa);
+            villa.Id = VillaStore.HouseList.OrderByDescending(e => e.Id).FirstOrDefault().Id + 1;
+            VillaStore.HouseList.Add(villa);
             return CreatedAtRoute("GetVillas", new {id = villa.Id }, villa);
         }
 
@@ -65,7 +65,7 @@ namespace Magic_VillaAPI.Controllers
                 ModelState.AddModelError("CustomError", "Error ID");
                 return BadRequest(ModelState);
             }
-            var villa = VillaStore.villaList.FirstOrDefault(e => e.Id == id);
+            var villa = VillaStore.HouseList.FirstOrDefault(e => e.Id == id);
             
             if (villa == null)
             {
@@ -74,37 +74,37 @@ namespace Magic_VillaAPI.Controllers
             }
             
 
-            VillaStore.villaList.Remove(villa);
+            VillaStore.HouseList.Remove(villa);
             return NoContent();
         }
 
         [HttpPut("{id:int}")]
 
-        public IActionResult UpdateVilla(int id, [FromBody] VillaDTO villa)
+        public IActionResult UpdateVilla(int id, [FromBody] HouseDTO villa)
         {
 
             if (villa == null || id != villa.Id)
             {
                 return BadRequest("Invalid Request");
             }
-            var Updatevilla = VillaStore.villaList.FirstOrDefault(e => e.Id == id);
+            var Updatevilla = VillaStore.HouseList.FirstOrDefault(e => e.Id == id);
             Updatevilla.Id = villa.Id;
             Updatevilla.Name = villa.Name;
             Updatevilla.Sqft = villa.Sqft;
-            Updatevilla.Street = villa.Street;
+            Updatevilla.Address = villa.Address;
    
             return NoContent();
         }
 
         [HttpPatch("{id:int}", Name = "UpdatePrtialVilla")]
 
-        public IActionResult UpdatePrtialVilla(int id, JsonPatchDocument<VillaDTO> patch)
+        public IActionResult UpdatePrtialVilla(int id, JsonPatchDocument<HouseDTO> patch)
         {
             if (patch == null || id == 0)
             {
                 return BadRequest();
             }
-            var villa = VillaStore.villaList.FirstOrDefault(e => e.Id == id);
+            var villa = VillaStore.HouseList.FirstOrDefault(e => e.Id == id);
             
             if (villa == null)
             {
