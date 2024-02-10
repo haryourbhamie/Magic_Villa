@@ -1,4 +1,4 @@
-﻿namespace Magic_VillaAPI.Models.VillaDto
+﻿namespace Magic_VillaAPI.Models.HouseDto
 {
     public class HouseDTO
     {
